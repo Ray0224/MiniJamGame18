@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cj8sna6bjg4oq"]
+
+[ext_resource type="Script" path="res://script/AudioManager.gd" id="1_ls2w6"]
+[ext_resource type="AudioStream" uid="uid://diher1obi2x5j" path="res://asset/SFX/die3.wav" id="2_mbuwq"]
+[ext_resource type="AudioStream" uid="uid://s2il5yuvlnwr" path="res://asset/SFX/die1.wav" id="2_uh136"]
+[ext_resource type="AudioStream" uid="uid://cpsbgrtflh7jt" path="res://asset/SFX/die2.wav" id="3_jog3h"]
+[ext_resource type="AudioStream" uid="uid://duxs0ondd4lff" path="res://asset/SFX/hurt.wav" id="5_on3pc"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_ls2w6")
+
+[node name="DieSounds" type="Node" parent="."]
+
+[node name="DieSound" type="AudioStreamPlayer" parent="DieSounds"]
+stream = ExtResource("2_uh136")
+volume_db = -5.0
+max_polyphony = 3
+
+[node name="DieSound2" type="AudioStreamPlayer" parent="DieSounds"]
+stream = ExtResource("3_jog3h")
+volume_db = -5.0
+max_polyphony = 3
+
+[node name="DieSound3" type="AudioStreamPlayer" parent="DieSounds"]
+stream = ExtResource("2_mbuwq")
+volume_db = -5.0
+max_polyphony = 3
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_on3pc")
+volume_db = -5.0
+max_polyphony = 3
+bus = &"HurtSound"

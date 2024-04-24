@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://1bqdhpdw0dsy"]
+
+[ext_resource type="Script" path="res://Ray/script/menu.gd" id="1_lw4p5"]
+[ext_resource type="Texture2D" uid="uid://ch1u447b1jpl7" path="res://icon.svg" id="2_6aexp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwl42"]
+bg_color = Color(0.6, 0.847059, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvked"]
+bg_color = Color(0.941176, 0.352941, 0.619608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuojl"]
+bg_color = Color(0, 0.6, 0.6, 1)
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lw4p5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6aexp")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = -37.5
+offset_right = 94.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.721569, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.596078, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0.85098, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.654902, 0.384314, 0, 1)
+theme_override_colors/font_outline_color = Color(0.537255, 0, 0.560784, 1)
+theme_override_colors/icon_normal_color = Color(0.776471, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0.623529, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_mwl42")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hvked")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tuojl")
+text = "reload"
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

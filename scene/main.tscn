@@ -1,0 +1,278 @@
+[gd_scene load_steps=19 format=3 uid="uid://lrcpvexee0or"]
+
+[ext_resource type="PackedScene" uid="uid://conkkhajuci15" path="res://scene/base.tscn" id="1_il4ny"]
+[ext_resource type="Script" path="res://script/main.gd" id="1_oj8um"]
+[ext_resource type="PackedScene" uid="uid://dd4e3e0g2a102" path="res://scene/circle_path.tscn" id="2_4e776"]
+[ext_resource type="PackedScene" uid="uid://dt82s3u6ya71a" path="res://scene/enemy_spawner.tscn" id="5_2j8ts"]
+[ext_resource type="PackedScene" uid="uid://dpixndi5rlr64" path="res://scene/heart.tscn" id="5_chdj0"]
+[ext_resource type="FontFile" uid="uid://b8n1mf1f0mlu1" path="res://asset/fonts/ttf/Cubic_11_1.010_R.ttf" id="6_08a2i"]
+[ext_resource type="PackedScene" uid="uid://ehwnax25n5ud" path="res://scene/retry.tscn" id="7_6x48f"]
+[ext_resource type="Texture2D" uid="uid://dsfqc8iv6ed5v" path="res://sprite/score.png" id="8_p4oii"]
+[ext_resource type="Texture2D" uid="uid://qf56217mug48" path="res://sprite/smoke.png" id="9_2ane5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dw5x6"]
+font = ExtResource("6_08a2i")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_dss20"]
+font = ExtResource("6_08a2i")
+font_size = 200
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_usbsf"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_f32wb"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.188034, 26.3636), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_yokid"]
+max_value = 10.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 2.18182), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qka2w"]
+offsets = PackedFloat32Array(0, 0.00409836, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_4tlx6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Score:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -867)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Score:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.23883, 0.631313)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pe6ye"]
+resource_name = "score"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Score:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -867), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Score:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.25, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.23883, 0.631313), Vector2(1.23883, 0.631313), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jvm6f"]
+_data = {
+"RESET": SubResource("Animation_4tlx6"),
+"score": SubResource("Animation_pe6ye")
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_oj8um")
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Base" parent="." instance=ExtResource("1_il4ny")]
+position = Vector2(400, 400)
+scale = Vector2(0.5, 0.5)
+
+[node name="CirclePath" parent="." instance=ExtResource("2_4e776")]
+position = Vector2(400, 400)
+scale = Vector2(0.5, 0.5)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("5_2j8ts")]
+
+[node name="hearts" type="Node2D" parent="."]
+
+[node name="heart" parent="hearts" instance=ExtResource("5_chdj0")]
+position = Vector2(30, 50)
+scale = Vector2(0.5, 0.5)
+
+[node name="heart2" parent="hearts" instance=ExtResource("5_chdj0")]
+position = Vector2(80, 50)
+scale = Vector2(0.5, 0.5)
+
+[node name="heart3" parent="hearts" instance=ExtResource("5_chdj0")]
+position = Vector2(130, 50)
+scale = Vector2(0.5, 0.5)
+
+[node name="heart4" parent="hearts" instance=ExtResource("5_chdj0")]
+position = Vector2(180, 50)
+scale = Vector2(0.5, 0.5)
+
+[node name="heart5" parent="hearts" instance=ExtResource("5_chdj0")]
+position = Vector2(230, 50)
+scale = Vector2(0.5, 0.5)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 689.0
+offset_top = 32.0
+offset_right = 789.0
+offset_bottom = 70.0
+grow_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_dw5x6")
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+offset_left = 287.0
+offset_top = 422.0
+offset_right = 521.0
+offset_bottom = 659.0
+text = "0"
+label_settings = SubResource("LabelSettings_dss20")
+
+[node name="retry" parent="." instance=ExtResource("7_6x48f")]
+process_mode = 3
+visible = false
+offset_left = 17.0
+offset_top = 602.0
+offset_right = 193.0
+offset_bottom = 778.0
+
+[node name="score" type="Node2D" parent="."]
+position = Vector2(400, 400)
+
+[node name="Score" type="Sprite2D" parent="score"]
+position = Vector2(0, -867)
+scale = Vector2(1.23883, 0.631313)
+texture = ExtResource("8_p4oii")
+offset = Vector2(0, -140)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="score"]
+z_index = 2
+material = SubResource("CanvasItemMaterial_usbsf")
+rotation = 3.14159
+scale = Vector2(100, 100)
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("9_2ane5")
+spread = 9.76
+gravity = Vector2(0, -5)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+damping_min = 94.4
+damping_max = 94.4
+damping_curve = SubResource("Curve_f32wb")
+scale_amount_curve = SubResource("Curve_yokid")
+color_ramp = SubResource("Gradient_qka2w")
+anim_speed_max = 1.0
+anim_offset_max = 1.0
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="score"]
+z_index = 2
+material = SubResource("CanvasItemMaterial_usbsf")
+scale = Vector2(100, 100)
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("9_2ane5")
+spread = 9.76
+gravity = Vector2(0, -5)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+damping_min = 94.4
+damping_max = 94.4
+damping_curve = SubResource("Curve_f32wb")
+scale_amount_curve = SubResource("Curve_yokid")
+color_ramp = SubResource("Gradient_qka2w")
+anim_speed_max = 1.0
+anim_offset_max = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="score"]
+root_node = NodePath("../CPUParticles2D2")
+libraries = {
+"": SubResource("AnimationLibrary_jvm6f")
+}
+
+[connection signal="destroyed" from="Base" to="." method="_on_base_destroyed"]
+[connection signal="obstacle_generated" from="CirclePath/CenterPivot/Player" to="." method="add_obstacle"]
+
+[editable path="CirclePath"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyod6mrk57set"]
+
+[ext_resource type="Texture2D" uid="uid://bvy2umahqqb6u" path="res://sprite/start.png" id="1_frkrx"]
+[ext_resource type="Script" path="res://script/start.gd" id="2_52mj2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2nim"]
+atlas = ExtResource("1_frkrx")
+region = Rect2(0, 0, 352, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghh16"]
+atlas = ExtResource("1_frkrx")
+region = Rect2(704, 0, 352, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfssx"]
+atlas = ExtResource("1_frkrx")
+region = Rect2(352, 0, 352, 139)
+
+[node name="start" type="TextureButton"]
+texture_normal = SubResource("AtlasTexture_i2nim")
+texture_pressed = SubResource("AtlasTexture_ghh16")
+texture_hover = SubResource("AtlasTexture_yfssx")
+script = ExtResource("2_52mj2")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

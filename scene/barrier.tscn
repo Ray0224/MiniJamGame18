@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c30q3hwdowhl4"]
+
+[ext_resource type="Script" path="res://script/barrier.gd" id="1_x5mnd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vj5ot"]
+radius = 80.0
+
+[node name="Barrier" type="Area2D" groups=["Barrier"]]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_x5mnd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vj5ot")
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 2.0
+
+[node name="FixTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="area_entered" from="." to="." method="on_hit"]
+[connection signal="timeout" from="FixTimer" to="." method="_on_fix_timer_timeout"]

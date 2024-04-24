@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://conkkhajuci15"]
+
+[ext_resource type="Script" path="res://script/base.gd" id="1_1qj42"]
+[ext_resource type="PackedScene" uid="uid://b2sv6i3xwedm8" path="res://scene/barrier.tscn" id="2_jdd2l"]
+
+[node name="Base" type="Area2D" groups=["Base"]]
+collision_mask = 2
+script = ExtResource("1_1qj42")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, -32, 32, 0, 0, 32, -32, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -32, 32, 0, 0, 32, -32, 0)
+
+[node name="Barrier" parent="." instance=ExtResource("2_jdd2l")]
+
+[connection signal="area_entered" from="." to="." method="on_hit"]
+[connection signal="exploded" from="Barrier" to="." method="_on_barrier_exploded"]

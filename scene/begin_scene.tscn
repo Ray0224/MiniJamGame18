@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://caei8e8tod7x"]
+
+[ext_resource type="PackedScene" uid="uid://b5igbgon6pjdf" path="res://scene/beginning.tscn" id="1_bhec8"]
+[ext_resource type="FontFile" uid="uid://b8n1mf1f0mlu1" path="res://asset/fonts/ttf/Cubic_11_1.010_R.ttf" id="2_rjt7w"]
+
+[node name="begin_scene" type="Node2D"]
+
+[node name="beginning" parent="." instance=ExtResource("1_bhec8")]
+position = Vector2(400, 400)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 59.0
+offset_top = 638.0
+offset_right = 274.0
+offset_bottom = 764.0
+theme_override_fonts/font = ExtResource("2_rjt7w")
+theme_override_font_sizes/font_size = 100
+text = "SKIP"
+flat = true
+
+[connection signal="pressed" from="Button" to="beginning" method="_on_button_pressed"]

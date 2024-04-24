@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://capdoyub4upam"]
+
+[ext_resource type="Shader" uid="uid://dx75i3jwtsryn" path="res://Ray/shader/melt_shader.tres" id="1_2h16l"]
+[ext_resource type="Texture2D" uid="uid://ch1u447b1jpl7" path="res://icon.svg" id="2_prnd7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tq2pb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rcn4k"]
+shader = ExtResource("1_2h16l")
+shader_parameter/melt = -1.0
+shader_parameter/edge = 0.1
+shader_parameter/ColorParameter = Color(0.91, 0.288167, 0, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xqown"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_sgidd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.00909091, 1), 0.0, 0.0, 0, 0, Vector2(0.745454, 0.581818), 0.0, 0.0, 0, 0, Vector2(0.993939, 0.0818181), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_onb7t"]
+offsets = PackedFloat32Array(0, 0.802676, 1)
+colors = PackedColorArray(0.91, 0.59332, 0.1183, 0.905882, 0.97, 0, 0.0161664, 0.823529, 1, 1, 1, 0)
+
+[node name="shader_test" type="Node2D"]
+material = SubResource("ShaderMaterial_tq2pb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_rcn4k")
+position = Vector2(562, 521)
+texture = ExtResource("2_prnd7")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_xqown")
+position = Vector2(400, 463)
+amount = 30
+emission_shape = 1
+emission_sphere_radius = 12.0
+direction = Vector2(0, 1)
+gravity = Vector2(0, -500)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 5.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_sgidd")
+color_ramp = SubResource("Gradient_onb7t")

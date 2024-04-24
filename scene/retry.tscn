@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://ehwnax25n5ud"]
+
+[ext_resource type="Texture2D" uid="uid://dfkmtdov1nqay" path="res://sprite/retry.png" id="1_5mbvg"]
+[ext_resource type="Script" path="res://script/retry.gd" id="2_7ey5s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0d34"]
+atlas = ExtResource("1_5mbvg")
+region = Rect2(0, 0, 176, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wiq2u"]
+atlas = ExtResource("1_5mbvg")
+region = Rect2(352, 0, 176, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c34ak"]
+atlas = ExtResource("1_5mbvg")
+region = Rect2(176, 0, 176, 176)
+
+[node name="retry" type="TextureButton"]
+texture_normal = SubResource("AtlasTexture_k0d34")
+texture_pressed = SubResource("AtlasTexture_wiq2u")
+texture_hover = SubResource("AtlasTexture_c34ak")
+script = ExtResource("2_7ey5s")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

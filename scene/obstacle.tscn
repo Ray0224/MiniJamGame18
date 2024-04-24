@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1w8t2i1ed6yn"]
+
+[ext_resource type="Script" path="res://script/obstacle.gd" id="1_yg4lw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r8xvw"]
+
+[node name="Obstacle" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_yg4lw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r8xvw")
+
+[node name="FreeTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)
+
+[connection signal="area_entered" from="." to="." method="on_hit"]
+[connection signal="timeout" from="FreeTimer" to="." method="_on_free_timer_timeout"]
